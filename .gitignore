@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# build folders
+obj
+bin
+
+# CMake output
+compile_commands.json
+build
+
+
