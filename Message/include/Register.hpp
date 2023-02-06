@@ -12,6 +12,7 @@ namespace msgs {
     /// keeps registerFactory from being publicly available
     class BaseRegister final {
         static void registerFactory(MessageType const & type, Factory factory);
+        static void unregisterFactory(MessageType const & type);
         template <MessageType, class> friend class Register;
     };
 
@@ -25,6 +26,10 @@ namespace msgs {
         public:
             Register() {
                 BaseRegister::registerFactory(TEnum, &factory);
+            }
+
+            ~Register() {
+                BaseRegister::unregisterFactory(TEnum);
             }
     };
 }

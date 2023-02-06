@@ -28,3 +28,7 @@ std::unique_ptr<IMessage> msgs::create(MessageType const & type) {
 void BaseRegister::registerFactory(MessageType const & type, Factory factory) {
     messageMap()[type] = factory;
 }
+
+void BaseRegister::unregisterFactory(MessageType const & type) {
+    messageMap().erase(type);
+}
